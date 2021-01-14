@@ -27,9 +27,7 @@ class MasterViewModel : ViewModel() {
                 val personList = withContext(Dispatchers.IO) {
                     repo.getRandomUsers()
                 }
-                mutableLiveData.value = MasterViewState(
-                    persons = personList
-                )
+                mutableLiveData.value = MasterViewState(persons = personList)
 
             } catch (exception: Exception) {
                 Log.d("YV", "Error retrieving list :$exception")

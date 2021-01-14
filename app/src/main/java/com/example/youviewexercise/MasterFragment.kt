@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -23,7 +24,6 @@ class MasterFragment : Fragment(), PersonListClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_overview, container, false)
     }
 
@@ -41,7 +41,6 @@ class MasterFragment : Fragment(), PersonListClickListener {
         getListOfPeople()
     }
 
-
     override fun onPersonClicked(person: Person) {
         val action = MasterFragmentDirections.actionOverviewFragmentToDetailsFragment(person)
         findNavController().navigate(action)
@@ -57,6 +56,26 @@ class MasterFragment : Fragment(), PersonListClickListener {
     }
 
     private fun updateView(state: MasterViewState) {
+        with(state) {
+            when {
+                loading -> {
+                    progress_bar.isVisible = true
+                    person_overview_recycler_view.isVisible = false
+                    loading_error_message.isVisible = false
+                }
+                loadingError -> {
+                    progress_bar.isVisible = false
+                    person_overview_recycler_view.isVisible = false
+                    loading_error_message.isVisible = true
+                }
+                else -> {
+                    progress_bar.isVisible = false
+                    person_overview_recycler_view.isVisible = true
+                    loading_error_message.isVisible = false
+                }
+            }
+        }
+
         viewAdapter.update(state.persons)
     }
 

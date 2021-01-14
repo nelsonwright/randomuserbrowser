@@ -26,6 +26,7 @@ class DetailFragment : Fragment() {
         args.person.apply {
             detail_person_name.text = view.context.getString(R.string.full_name, title, firstName, lastName)
             detail_person_email.text = email
+
             location.apply {
                 detail_person_street.text = view.context.getString(
                     R.string.house_number_and_street, streetNumber,

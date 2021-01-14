@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">YouViewExercise</string>
+    <string name="loading_error_message">Sorry, something went wrong with loading the random users.  Please re-start
+        the app to try again.</string>
     <!-- full name in form of title, first name, last name, e.g. Mr Bob Lawrence   -->
     <string name="full_name">%1$s %2$s %3$s</string>
 
