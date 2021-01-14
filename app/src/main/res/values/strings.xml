@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">YouViewExercise</string>
+    <!-- full name in form of title, first name, last name, e.g. Mr Bob Lawrence   -->
+    <string name="full_name">%1$s %2$s %3$s</string>
+
+    <!-- House number and name of street, e.g. 25 High Street   -->
+    <string name="house_number_and_street">%1$s %2$s</string>
+
+    <!-- image content descriptions  -->
     <string name="a_small_image_of_this_person">a small image of this person</string>
+    <string name="a_larger_image_of_this_person">a larger image of this person</string>
 </resources>

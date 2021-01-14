@@ -1,12 +1,15 @@
 package com.example.youviewexercise
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youviewexercise.models.Person
 
-class PersonListAdapter(private var personList: List<Person>, private val context: Context) :
+interface PersonListClickListener {
+    fun onPersonClicked(person: Person)
+}
+
+class PersonListAdapter(private var personList: List<Person>, private val listener: PersonListClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -16,7 +19,7 @@ class PersonListAdapter(private var personList: List<Person>, private val contex
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder as MasterRowViewHolder
         if (personList.isNotEmpty()) {
-            holder.bindView(person = personList[position])
+            holder.bindView(person = personList[position], listener = listener)
         }
     }
 

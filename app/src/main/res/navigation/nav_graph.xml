@@ -21,6 +21,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.youviewexercise.DetailFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_detail"></fragment>
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="person"
+            app:argType="com.example.youviewexercise.models.Person" />
+    </fragment>
 
 </navigation>

@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.youviewexercise.models.Person
 import kotlinx.android.synthetic.main.fragment_overview.*
 
-class MasterFragment : Fragment() {
+class MasterFragment : Fragment(), PersonListClickListener {
 
     private val viewModel: MasterViewModel by viewModels()
     private lateinit var viewAdapter: PersonListAdapter
@@ -39,9 +41,15 @@ class MasterFragment : Fragment() {
         getListOfPeople()
     }
 
+
+    override fun onPersonClicked(person: Person) {
+        val action = MasterFragmentDirections.actionOverviewFragmentToDetailsFragment(person)
+        findNavController().navigate(action)
+    }
+
     private fun setupRecyclerView() {
         viewManager = LinearLayoutManager(context)
-        viewAdapter = PersonListAdapter(emptyList(), requireContext())
+        viewAdapter = PersonListAdapter(emptyList(), this)
         person_overview_recycler_view.apply {
             layoutManager = viewManager
             adapter = viewAdapter
