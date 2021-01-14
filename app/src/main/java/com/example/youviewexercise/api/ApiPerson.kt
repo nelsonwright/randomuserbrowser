@@ -15,7 +15,8 @@ data class ApiPerson(
         return Person(
             title = name.title,
             firstName = name.firstName,
-            lastName = name.lastName
+            lastName = name.lastName,
+            thumbnailUrl = picture.thumbnailUrl
         )
     }
 }

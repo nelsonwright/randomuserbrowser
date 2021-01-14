@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/person_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/person_image_thumbnail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/a_small_image_of_this_person"
+        android:src="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/person_first_name"
+        android:id="@+id/person_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintStart_toEndOf="@id/person_title"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/person_last_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingEnd="16dp"
-        app:layout_constraintStart_toEndOf="@id/person_first_name"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        style="@style/overview_row"
+        app:layout_constraintBottom_toBottomOf="@id/person_image_thumbnail"
+        app:layout_constraintStart_toEndOf="@id/person_image_thumbnail"
+        app:layout_constraintTop_toTopOf="@id/person_image_thumbnail"
+        tools:text="Mrs Myrna Low" />
 </androidx.constraintlayout.widget.ConstraintLayout>
