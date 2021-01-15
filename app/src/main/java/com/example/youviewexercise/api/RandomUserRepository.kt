@@ -18,5 +18,4 @@ class RandomUserRepositoryImpl @Inject constructor(
             it.toModel()
         }
     }
-
 }

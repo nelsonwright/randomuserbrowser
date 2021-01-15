@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youviewexercise.models.Person
+import com.example.youviewexercise.viewmodels.MasterViewModel
+import com.example.youviewexercise.viewmodels.MasterViewModelFactory
 import kotlinx.android.synthetic.main.fragment_overview.*
 import javax.inject.Inject
 

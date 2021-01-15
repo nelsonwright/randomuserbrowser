@@ -53,16 +53,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecyle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecyle_version"
 
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
 
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"

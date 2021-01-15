@@ -1,4 +1,4 @@
-package com.example.youviewexercise.api
+package com.example.youviewexercise.api.apimodels
 
 data class ApiStreet(
     val number: String,
