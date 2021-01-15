@@ -1,6 +1,7 @@
 package com.example.youviewexercise.api
 
 import com.example.youviewexercise.models.Person
+import javax.inject.Inject
 import javax.inject.Singleton
 
 interface RandomUserRepository {
@@ -8,7 +9,7 @@ interface RandomUserRepository {
 }
 
 @Singleton
-class RandomUserRepositoryImpl constructor(
+class RandomUserRepositoryImpl @Inject constructor(
     private val api: RandomUserApiInterface
 ) : RandomUserRepository {
 

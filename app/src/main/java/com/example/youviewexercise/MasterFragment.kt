@@ -13,12 +13,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youviewexercise.models.Person
 import kotlinx.android.synthetic.main.fragment_overview.*
+import javax.inject.Inject
 
 class MasterFragment : Fragment(), PersonListClickListener {
 
-    private val viewModel: MasterViewModel by viewModels()
     private lateinit var viewAdapter: PersonListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
+    @Inject
+    lateinit var viewModelFactory: MasterViewModelFactory
+    private val viewModel: MasterViewModel by viewModels { viewModelFactory }
+
+    override fun onAttach(context: Context) {
+        (context.applicationContext as YouViewApplication).appComponent.inject(this)
+        super.onAttach(context)
+        getListOfPeople()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,15 +39,9 @@ class MasterFragment : Fragment(), PersonListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-
         viewModel.viewState.observe(viewLifecycleOwner, { state ->
             updateView(state)
         })
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        getListOfPeople()
     }
 
     override fun onPersonClicked(person: Person) {

@@ -6,26 +6,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.youviewexercise.api.RandomUserRepository
-import com.example.youviewexercise.api.RandomUserRepositoryImpl
-import com.example.youviewexercise.api.RandomUserService
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.MainCoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MasterViewModel : ViewModel() {
-    private val repo: RandomUserRepository = RandomUserRepositoryImpl(RandomUserService.create())
+class MasterViewModel(
+    private val repository: RandomUserRepository,
+    private val mainDispatcher: MainCoroutineDispatcher,
+    private val ioDispatcher: CoroutineDispatcher
+) : ViewModel() {
     val viewState: LiveData<MasterViewState>
         get() = mutableLiveData
 
     private var mutableLiveData = MutableLiveData<MasterViewState>()
 
     fun getListOfPeople() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(mainDispatcher) {
             mutableLiveData.value = MasterViewState(loading = true)
 
             try {
-                val personList = withContext(Dispatchers.IO) {
-                    repo.getRandomUsers()
+                val personList = withContext(ioDispatcher) {
+                    repository.getRandomUsers()
                 }
                 mutableLiveData.value = MasterViewState(persons = personList)
 

@@ -1,5 +1,7 @@
 package com.example.youviewexercise.models
 
+import java.io.Serializable
+
 data class Location(
     val streetNumber: String,
     val streetName: String,
@@ -7,4 +9,4 @@ data class Location(
     val state: String,
     val country: String,
     val postcode: String
-)
+) : Serializable
